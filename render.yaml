@@ -1,7 +1,13 @@
 services:
-  - type: web
-    name: erpnext-mcp
-    env: python
-    plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+     - type: web
+       name: erpnext-mcp
+       env: node
+       buildCommand: npm install @modelcontextprotocol/server-erpnext
+       startCommand: npx @modelcontextprotocol/server-erpnext
+       envVars:
+         - key: ERPNEXT_URL
+           value: https://demo.prilk.com
+         - key: ERPNEXT_API_KEY
+           value: b18f48dfa931033
+         - key: ERPNEXT_API_SECRET
+           value: b169abcd88b8cbc
